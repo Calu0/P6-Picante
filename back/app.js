@@ -1,10 +1,8 @@
 const express = require('express');
-
 const app = express();
-
 app.use(express.json());
-
 const mongoose = require('mongoose');
+const usersRoute = require('./routes/usersRoute');
 
 
 mongoose.connect('mongodb+srv://luca:picante9@cluster0.szqelaz.mongodb.net/?retryWrites=true&w=majority',
@@ -23,23 +21,7 @@ app.use((req, res, next) => {
     next();
 });
 
-const Log = require('./models/Log');
-
-app.post('/api/auth/signup', (req, res, next) => {
-    delete req.body._id;
-    const log = new Log({
-        ...req.body
-    });
-    log.save()
-        .then(() => res.status(201).json({ message: 'Nouveau utilisateur enregistré !' }))
-        .catch(error => res.status(400).json({ error }));
-});
+app.use('/api/auth', usersRoute);
 
 
-app.use('/api/auth/login', (req, res, next) => {
-    const id = parseInt(req.params._id)
-    Log.find(log => log._id == id)
-    .then(console.log(Log.find))
-    .catch(error => res.status(400).json({ error }));
-})
 module.exports = app;   
