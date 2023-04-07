@@ -3,8 +3,11 @@ const app = express();
 app.use(express.json());
 const mongoose = require('mongoose');
 const usersRoute = require('./routes/usersRoute');
+// const saucesRoute = require('./routes/saucesRoute')
+const path = require('path');
 const morgan = require('morgan');
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(morgan('dev'))
 
 
@@ -24,7 +27,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/api/auth', usersRoute);
+app.use('/api/auth', usersRoute) 
+// app.use('api/sauces', saucesRoute)
 
 
 module.exports = app;   
