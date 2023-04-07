@@ -3,6 +3,9 @@ const app = express();
 app.use(express.json());
 const mongoose = require('mongoose');
 const usersRoute = require('./routes/usersRoute');
+const morgan = require('morgan');
+
+app.use(morgan('dev'))
 
 
 mongoose.connect('mongodb+srv://luca:picante9@cluster0.szqelaz.mongodb.net/?retryWrites=true&w=majority',
