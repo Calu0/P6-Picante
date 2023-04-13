@@ -12,7 +12,7 @@ router.get('/:id',auth, saucesCtrl.getSingleSauce);
 
 router.post('',auth, multer, saucesCtrl.newSauce)
 
-router.put('/:id',auth, saucesCtrl.modifySauce)
+router.put('/:id',auth, multer, saucesCtrl.modifySauce)
 
 router.delete('/:id',auth, saucesCtrl.deleteSauce)
 
