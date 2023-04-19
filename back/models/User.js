@@ -7,7 +7,6 @@ const UserSchema = mongoose.Schema({
 });
 
 
-// UniqueValidator plugin throw error
- UserSchema.plugin(uniqueValidator);
+UserSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('User', UserSchema);  
