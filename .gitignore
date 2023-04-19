@@ -6,6 +6,9 @@
 /out-tsc
 /bazel-out
 
+#Image folder
+/back/images
+
 # Node
 /node_modules
 npm-debug.log
