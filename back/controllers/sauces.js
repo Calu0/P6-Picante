@@ -35,7 +35,6 @@ exports.newSauce = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 }
 
-
 exports.modifySauce = (req, res, next) => {
     const sauceObject = req.file ? {
         ...JSON.parse(req.body.sauce),
